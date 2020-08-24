@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+var userID int
+var userPWD string
+
 func main() {
 	var key int
 	var loop = true
@@ -26,5 +29,17 @@ func main() {
 			fmt.Println("选择错误，请重新选择！")
 		}
 
+	}
+	if key == 1 {
+		fmt.Println("请输入用户ID：")
+		fmt.Scanln(&userID)
+		fmt.Println("请输入用户密码：")
+		fmt.Scanln(&userPWD)
+		err := login(userID, userPWD)
+		if err != nil {
+			fmt.Println(err)
+		}
+	} else if key == 2 {
+		fmt.Println("注册用户")
 	}
 }
