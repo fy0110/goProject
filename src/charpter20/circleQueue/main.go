@@ -21,7 +21,7 @@ func (this *circleQueue) Push(val int) (err error) {
 	this.tail = (this.tail + 1) % this.maxSize
 	return
 }
-func (this circleQueue) Pop() (val int, err error) {
+func (this *circleQueue) Pop() (val int, err error) {
 	if this.IsEmpty() {
 		return 0, errors.New("队列已空")
 	}
