@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type HeroNode struct {
 	no       int
@@ -9,18 +12,30 @@ type HeroNode struct {
 	next     *HeroNode
 }
 
-func InserHeroNode(head *HeroNode, newheroNode *HeroNode) {
+func InserHeroNode2(head *HeroNode, newheroNode *HeroNode) {
 	//创建一个辅助结点
 	temp := head
+	flag := true
 	for {
 		if temp.next == nil {
+			break
+		} else if temp.next.no > newheroNode.no {
+			break
+		} else if temp.next.no == newheroNode.no {
+			flag = false
 			break
 		}
 		temp = temp.next
 	}
-	temp.next = newheroNode
-
+	if !flag {
+		fmt.Println("已经存在")
+		return
+	} else {
+		newheroNode.next = temp.next
+		temp.next = newheroNode
+	}
 }
+
 func ListHeroNode(head *HeroNode) {
 	temp := head
 	if temp.next == nil {
@@ -57,8 +72,9 @@ func main() {
 		nickname: "豹子头",
 		next:     nil,
 	}
-	InserHeroNode(head, hero1)
-	InserHeroNode(head, hero2)
-	InserHeroNode(head, hero3)
+	fmt.Println(time.Now())
+	InserHeroNode2(head, hero2)
+	InserHeroNode2(head, hero3)
+	InserHeroNode2(head, hero1)
 	ListHeroNode(head)
 }
