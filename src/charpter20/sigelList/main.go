@@ -12,6 +12,19 @@ type HeroNode struct {
 	next     *HeroNode
 }
 
+func InserHeroNode(head *HeroNode, newheroNode *HeroNode) {
+	//创建一个辅助结点
+	temp := head
+	for {
+		if temp.next == nil {
+			break
+		}
+		temp = temp.next
+	}
+	temp.next = newheroNode
+
+}
+
 func InserHeroNode2(head *HeroNode, newheroNode *HeroNode) {
 	//创建一个辅助结点
 	temp := head
