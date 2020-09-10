@@ -111,7 +111,6 @@ func main() {
 	InsertCatNode(head, cat4)
 	ListCircleLink(head)
 	fmt.Println("=======================")
-	head1 := DelCatNode(head, 3)
-	//DelCatNode(head,3)
+	head1 := DelCatNode(head, 5)
 	ListCircleLink(head1)
 }
