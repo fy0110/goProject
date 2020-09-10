@@ -39,4 +39,18 @@ func main() {
 		}
 	}
 	fmt.Println(sparseArr)
+
+	//恢复数组
+	var chessMap2 [11][11]int
+	for i, valNode := range sparseArr {
+		if i != 0 {
+			chessMap2[valNode.row][valNode.col] = valNode.val
+		}
+	}
+	for _, v := range chessMap2 {
+		for _, v2 := range v {
+			fmt.Print(" ", v2)
+		}
+		fmt.Println()
+	}
 }
