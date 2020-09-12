@@ -46,10 +46,44 @@ func ShowBoy(first *Boy) {
 	}
 }
 
-//362
+func PlayGame(first *Boy, startNo int, countNum int) {
+	if first.next == nil {
+		fmt.Println("空链表")
+		return
+	}
+	tail := first
+	for {
+		if tail.next == first {
+			break
+		}
+		tail = tail.next
+	}
+	//让first移动到startNo
+	for i := 0; i < startNo-1; i++ {
+		first = first.next
+		tail = tail.next
+	}
+	//开始数countNum ，然后删除first
+	for {
+		for i := 0; i < countNum-1; i++ {
+			first = first.next
+			tail = tail.next
+		}
+		fmt.Println(first.no)
+		first = first.next
+		tail.next = first
+		//tail.next = first.next//这样会丢失first的位置
+		if tail == first {
+			break
+		}
+	}
+	fmt.Println(first.no)
+
+}
 
 func main() {
-	first := AddBoy(5)
+	first := AddBoy(500)
 	ShowBoy(first)
-
+	fmt.Println("=============================")
+	PlayGame(first, 20, 31)
 }
