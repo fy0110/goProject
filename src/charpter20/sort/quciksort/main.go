@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
-func quciksort(left int, right int, arr *[6]int) {
+func quciksort(left int, right int, arr *[80000]int) {
 	l := left
 	r := right
 	pivot := arr[(left+right)/2]
@@ -24,11 +28,16 @@ func quciksort(left int, right int, arr *[6]int) {
 			quciksort(l, right, arr)
 		}
 	}
-
 }
 
 func main() {
-	arr := [6]int{-9, 78, 0, 23, -567, 70}
-	quciksort(0, 5, &arr)
-	fmt.Println(arr)
+	var arr [80000]int
+	for i := 0; i < 80000; i++ {
+		arr[i] = rand.Intn(900000)
+	}
+	starttime := time.Now().Unix()
+	quciksort(0, len(arr)-1, &arr)
+	//fmt.Println(arr)
+	endtime := time.Now().Unix()
+	fmt.Println(endtime - starttime)
 }
